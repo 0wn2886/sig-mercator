@@ -29,11 +29,13 @@ services:
       - ../app/Http/Middleware/ForceXForwardedProto.php:/var/www/mercator/app/Http/Middleware/ForceXForwardedProto.php
     expose:
       - 80
+    ports:
+      - 8000:80
     environment:
       ##########################################
       # CONFIG set to your company's domain name
-      - APP_URL=https://mercator.mycompany.com/
-      - ASSET_URL=https://mercator.mycompany.com/
+      - APP_URL=https://mercatortest.sigerly.fr/
+      - ASSET_URL=https://mercatortest.sigerly.fr/
       ##########################################
 
       ##########################################
@@ -42,13 +44,13 @@ services:
       ##########################################
 
       # - Plusieurs types possibles : AD, OpenLDAP, FreeIPA, DirectoryServer
-      # - LDAP_TYPE="AD"
+      - LDAP_TYPE="AD"
       # - # If true, LDAP actions will be written to the application's default log file
-      # - LDAP_LOGGING=true
-      # - LDAP_CONNECTION=default
-      # - LDAP_HOST=127.0.0.1
+      - LDAP_LOGGING=true
+      - LDAP_CONNECTION=default
+      - LDAP_HOST=10.10.1.42
       # - # Identifiers of the user who will connect to the LDAP in order to perform queries
-      # - LDAP_USERNAME="cn=user,dc=local,dc=com"
+      - LDAP_USERNAME="cn=user,dc=local,dc=com"
       # - LDAP_PASSWORD=secret
       # - LDAP_PORT=389
       # - LDAP_BASE_DN="dc=local,dc=com"
