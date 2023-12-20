@@ -82,14 +82,14 @@ docker pull ghcr.io/dbarzin/mercator:latest
 Then you can run an ephemeral local instance in development mode (i.e. http):
 
 ```shell
-docker run -it --rm --name mercator -e APP_ENV=development -p "127.0.0.1:8000":80 ghcr.io/dbarzin/mercator:latest
+docker run -it --rm --name mercator -e APP_ENV=development -p 8000:80 ghcr.io/0wn2886/mercator:latest
 ```
 
 By default it uses an SQLite backend. If you want to make data persistent:
 
 ```shell
 touch ./db.sqlite && chmod a+w ./db.sqlite
-docker run -it --rm --name mercator -e APP_ENV=development -p "127.0.0.1:8000":80 -v $PWD/db.sqlite:/var/www/mercator/db.sqlite ghcr.io/dbarzin/mercator:latest
+docker run -it --rm --name mercator -e APP_ENV=development -p 8000:80 -v $PWD/db.sqlite:/var/www/mercator/db.sqlite ghcr.io/0wn2886/mercator:latest
 ```
 
 Finally you can populate the database with demo data through the `USE_DEMO_DATA` environment variable:
@@ -102,10 +102,9 @@ docker run -it --rm \
            -p "127.0.0.1:8000":80 \
            -v $PWD/db.sqlite:/var/www/mercator/db.sqlite \
            -e USE_DEMO_DATA=1 \
-           ghcr.io/dbarzin/mercator:latest
+           ghcr.io/0wn2886/mercator:latest
 ```
 
-Visit http://127.0.0.1:8000 !
 
 If you are looking for a more robust (https) and automated environment, please have a look on [docker-compose](docker-compose/) folder.
 
